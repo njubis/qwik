@@ -1,5 +1,53 @@
 # @qwik.dev/core
 
+## 2.0.0-beta.38
+
+### Major Changes
+
+- ✨ relocate built assets with output.assetFileNames; remove build.assetsDir handling (by [@maiieul](https://github.com/maiieul) in [#8817](https://github.com/QwikDev/qwik/pull/8817))
+
+- 🐞🩹 sync computed$ errors also go in `.error` and also rethrow on `.value` read (by [@wmertens](https://github.com/wmertens) in [#8807](https://github.com/QwikDev/qwik/pull/8807))
+
+### Minor Changes
+
+- ✨ `useComputed$` accepts async functions and provides a compute context with `track()`; `useAsync$`, `createAsync$`, and `AsyncSignal` are deprecated in favor of it (by [@wmertens](https://github.com/wmertens) in [#8807](https://github.com/QwikDev/qwik/pull/8807))
+
+- ✨ improve client resume responsiveness by splitting startup DOM processing into smaller tasks (by [@Varixo](https://github.com/Varixo) in [#8575](https://github.com/QwikDev/qwik/pull/8575))
+
+- ✨ improve client resume responsiveness by splitting state processing into smaller tasks (by [@Varixo](https://github.com/Varixo) in [#8579](https://github.com/QwikDev/qwik/pull/8579))
+
+- ✨ Add experimental `Show` control-flow component with `when$`, `then$`, and optional `else$` branches. (by [@Varixo](https://github.com/Varixo) in [#8624](https://github.com/QwikDev/qwik/pull/8624))
+
+### Patch Changes
+
+- 🐞🩹 clientOnly async signals now resume on pages without other serialized state (by [@wmertens](https://github.com/wmertens) in [#8807](https://github.com/QwikDev/qwik/pull/8807))
+
+- 🐞🩹 clientOnly option on useComputed$ now skips SSR computation (by [@wmertens](https://github.com/wmertens) in [#8807](https://github.com/QwikDev/qwik/pull/8807))
+
+- 🐞🩹 dedupe the ssr already-streamed-chore dev warning to once per host (by [@maiieul](https://github.com/maiieul) in [#8808](https://github.com/QwikDev/qwik/pull/8808))
+
+- 🐞🩹 the built-in dev-time eslint linter now targets es2022 (by [@maiieul](https://github.com/maiieul) in [#8810](https://github.com/QwikDev/qwik/pull/8810))
+
+- Dev-mode QRL segments now resolve even when their parent module was never loaded in the requesting Vite server (e.g. Vitest browser mode or SSR rendered in a separate server). The dev server transforms the parent on demand instead of erroring with "module does not exist in the build graph". (by [@maiieul](https://github.com/maiieul) in [#8816](https://github.com/QwikDev/qwik/pull/8816))
+
+- Fix SSR in-order streaming not flushing before awaiting a component-body promise. (by [@AmariahAK](https://github.com/AmariahAK) in [#8820](https://github.com/QwikDev/qwik/pull/8820))
+
+- 🐞🩹 duplicate projected element children when a component throws a promise on first render (by [@maiieul](https://github.com/maiieul) in [#8715](https://github.com/QwikDev/qwik/pull/8715))
+
+- 🐞🩹 resume multiple SSR containers on the same page (by [@maiieul](https://github.com/maiieul) in [#8799](https://github.com/QwikDev/qwik/pull/8799))
+
+- 🐞🩹 resuming component props when statePrewarm option is enabled (by [@Varixo](https://github.com/Varixo) in [#8784](https://github.com/QwikDev/qwik/pull/8784))
+
+- 🐞🩹 ssg build no longer overwrites the deployed server entry with a broken re-export (by [@wmertens](https://github.com/wmertens) in [#8806](https://github.com/QwikDev/qwik/pull/8806))
+
+- 🐞🩹 reduce component rerender when props are the same (by [@Varixo](https://github.com/Varixo) in [#8735](https://github.com/QwikDev/qwik/pull/8735))
+
+- 🐞🩹 surface a failed container resume — report it and unblock `whenContainerDataReady` waiters — instead of swallowing the error into a silent hang. (by [@maiieul](https://github.com/maiieul) in [#8772](https://github.com/QwikDev/qwik/pull/8772))
+
+- 🐞🩹 surface a failed vnode-data resume — report it and unblock the `whenVNodeDataReady` waiters — instead of swallowing the error into a silent hang. (by [@maiieul](https://github.com/maiieul) in [#8773](https://github.com/QwikDev/qwik/pull/8773))
+
+- 🐞🩹 prevent large updates that span multiple frames from restarting incorrectly and missing pending UI changes (by [@Varixo](https://github.com/Varixo) in [#8743](https://github.com/QwikDev/qwik/pull/8743))
+
 ## 2.0.0-beta.37
 
 ### Minor Changes
